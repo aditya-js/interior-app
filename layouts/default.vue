@@ -1,7 +1,6 @@
 <template>
   <div>
     <LazyHydrate when-visible>
-      <TopBar class="desktop-only" />
     </LazyHydrate>
     <LazyHydrate when-idle>
       <AppHeader />
@@ -28,7 +27,7 @@
 import AppHeader from '~/components/AppHeader.vue';
 import BottomNavigation from '~/components/BottomNavigation.vue';
 import AppFooter from '~/components/AppFooter.vue';
-import TopBar from '~/components/TopBar.vue';
+//import TopBar from '~/components/TopBar.vue';
 import CartSidebar from '~/components/CartSidebar.vue';
 import WishlistSidebar from '~/components/WishlistSidebar.vue';
 import LoginModal from '~/components/LoginModal.vue';
@@ -40,7 +39,7 @@ export default {
 
   components: {
     LazyHydrate,
-    TopBar,
+    //TopBar,
     AppHeader,
     BottomNavigation,
     AppFooter,
@@ -54,6 +53,23 @@ export default {
 
 <style lang="scss">
 @import "~@storefront-ui/vue/styles";
+:root {
+  --c-primary: #f8e007 !important;
+  --c-avon-secondary: rgb(247, 245, 245);
+  --search-bar-button-right: 10px;
+  --font-family: "Montserrat", sans-serif;
+  --font-family--secondary: "Montserrat", sans-serif !important;
+  --font-family--tertiary: "Montserrat-Bold" !important;
+  --c-background-one: #fff;
+  --c-background-two: rgb(241, 241, 241);
+  --c-color-one: rgb(49, 49, 49);
+  --c-color-two: #000;
+  --c-color-three: #fff;
+  --image-width: 100% !important;
+  --image-height: 664px !important;
+  --text-primary: #546264;
+  --text-secondary: #999;
+}
 
 #layout {
   box-sizing: border-box;
