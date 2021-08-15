@@ -131,28 +131,28 @@ export default {
       heroes: [
         {
           title: 'Colorful summer dresses are already in store',
-          subtitle: 'SUMMER COLLECTION 2019',
+          subtitle: 'NEW COLLECTION 2021',
           buttonText: 'Learn more',
           background: '#eceff1',
-          image: '/homepage/bannerH.webp',
+          image: '/homepage/ibannerA.png',
           link: '/c/women/women-clothing-shirts'
         },
         {
           title: 'Colorful summer dresses are already in store',
-          subtitle: 'SUMMER COLLECTION 2019',
+          subtitle: 'NEW COLLECTION 2021',
           buttonText: 'Learn more',
           background: '#efebe9',
-          image: '/homepage/bannerA.webp',
+          image: '/homepage/ibannerB.png',
           link: '/c/women/women-shoes-sandals',
           className:
             'sf-hero-item--position-bg-top-left sf-hero-item--align-right'
         },
         {
           title: 'Colorful summer dresses are already in store',
-          subtitle: 'SUMMER COLLECTION 2019',
+          subtitle: 'NEW COLLECTION 2021',
           buttonText: 'Learn more',
           background: '#fce4ec',
-          image: '/homepage/bannerB.webp',
+          image: '/homepage/ibannerC.png',
           link: '/c/women/women-clothing-dresses'
         }
       ],
