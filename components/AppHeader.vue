@@ -7,12 +7,12 @@
       <!-- TODO: add mobile view buttons after SFUI team PR -->
       <template #logo>
         <nuxt-link :to="localePath('/')" class="sf-header__logo">
-          <SfImage src="/icons/logo.svg" alt="Vue Storefront Next" class="sf-header__logo-image"/>
+          <SfImage src="/icons/logo.png" alt="Vue Storefront Next" class="sf-header__logo-image"/>
         </nuxt-link>
       </template>
       <template #navigation>
-        <SfHeaderNavigationItem class="nav-item" v-e2e="'app-header-url_women'" label="WOMEN" :link="localePath('/c/women')"/>
-        <SfHeaderNavigationItem class="nav-item"  v-e2e="'app-header-url_men'" label="MEN" :link="localePath('/c/men')" />
+        <SfHeaderNavigationItem class="nav-item" v-e2e="'app-header-url_women'" label="HOME Interior" :link="localePath('/c/women')"/>
+        <SfHeaderNavigationItem class="nav-item"  v-e2e="'app-header-url_men'" label="Office interior" :link="localePath('/c/men')" />
       </template>
       <template #aside>
         <LocaleSelector class="smartphone-only" />
@@ -44,12 +44,12 @@
             class="sf-button--pure sf-header__action"
             @click="toggleCartSidebar"
           >
-            <SfIcon
+            <!-- <SfIcon
               class="sf-header__icon"
               icon="empty_cart"
               size="1.25rem"
             />
-            <SfBadge v-if="cartTotalItems" class="sf-badge--number cart-badge">{{cartTotalItems}}</SfBadge>
+            <SfBadge v-if="cartTotalItems" class="sf-badge--number cart-badge">{{cartTotalItems}}</SfBadge> -->
           </SfButton>
         </div>
       </template>
@@ -152,9 +152,9 @@ export default {
     };
 
     onSSR(async () => {
-      await loadUser();
-      await loadCart();
-      await loadWishlist();
+      // await loadUser();
+      // await loadCart();
+      // await loadWishlist();
     });
 
     const closeSearch = () => {
@@ -226,6 +226,9 @@ export default {
   --header-padding:  var(--spacer-sm);
   @include for-desktop {
     --header-padding: 0;
+  }
+  .sf-image{
+    height: 70px !important;;
   }
   &__logo-image {
       height: 100%;
