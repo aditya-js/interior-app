@@ -91,7 +91,7 @@
     <div class="main section">
       <div class="sidebar desktop-only">
         <LazyHydrate when-idle>
-          <SfLoader
+         <!-- <SfLoader
             :class="{ 'loading--categories': loading }"
             :loading="loading"
           >
@@ -117,7 +117,7 @@
                         </template>
                       </SfMenuItem>
                     </SfListItem>
-                    <!--<SfListItem
+                    <SfListItem
                       class="list__item"
                       v-for="(subCat, j) in cat.items"
                       :key="j"
@@ -137,12 +137,13 @@
                           </nuxt-link>
                         </template>
                       </SfMenuItem>
-                    </SfListItem>-->
+                    </SfListItem>
                   </SfList>
                 </template>
               </SfAccordionItem>
             </SfAccordion>
-          </SfLoader>
+          </SfLoader>-->
+          <div></div>
         </LazyHydrate>
       </div>
       <!--<SfLoader :class="{ loading }" :loading="loading">-->
@@ -190,7 +191,7 @@
           class="products__list"
         >
           <SfProductCardHorizontal
-            v-for="(product, i) in products"
+            v-for="(product, i) in productsDisplay"
             :key="product.productId"
             :style="{ '--index': i }"
             :title="product.productName"
@@ -235,7 +236,7 @@
           </SfProductCardHorizontal>
         </transition-group>
 
-        <LazyHydrate on-interaction>
+        <!--<LazyHydrate on-interaction>
           <SfPagination
             v-if="!loading"
             class="products__pagination desktop-only"
@@ -244,7 +245,7 @@
             :total="pagination.totalPages"
             :visible="5"
           />
-        </LazyHydrate>
+        </LazyHydrate>-->
 
         <!-- <div
             v-show="pagination.totalPages > 1"
