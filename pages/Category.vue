@@ -35,7 +35,7 @@
         <div class="navbar__sort desktop-only">
           <span class="navbar__label">{{ $t("Sort by") }}:</span>
           <LazyHydrate on-interaction>
-            <SfSelect
+            <!-- <SfSelect
               :value="sortBy.selected"
               placeholder="Select sorting"
               class="navbar__select"
@@ -47,7 +47,7 @@
                 :value="option.id"
                 class="sort-by__option"
                 >{{ option.value }}</SfSelectOption
-              >
+              > -->
             </SfSelect>
           </LazyHydrate>
         </div>
@@ -158,7 +158,7 @@
           <SfProductCard
             v-e2e="'category-product-card'"
             v-for="(product, i) in productsDisplay"
-            :key="product.id"
+            :key="product.SKU"
             :style="{ '--index': i }"
             :title="product.productName"
             :image="product.productImage"
@@ -198,7 +198,7 @@
             :description="product.productName"
             :image="product.productImage"
             :regular-price="
-              $n(productd.price, 'currency')
+              $n(product.price, 'currency')
             "
             
             :max-rating="5"
@@ -392,8 +392,6 @@ export default {
   setup(props, context) {
     const th = useUiHelpers();
     const uiState = useUiState();
-    const { addItem: addItemToCart, isInCart } = useCart();
-    const { addItem: addItemToWishlist } = useWishlist();
     //const { result, search, loading } = useFacet();
     console.log("categories", th.getFacetsFromURL());
     const productsDisplay = computed(() => {
@@ -405,7 +403,8 @@ export default {
     //facetGetters.getCategoryTree(result.value)
     //);
     const breadcrumbs = computed(() => [
-      { link: th.getFacetsFromURL(), name: "Cat" },
+      { link: '/', text: "Home" },
+      { link: th.getFacetsFromURL().rootCatSlug, text: "Lamp" },
     ]);
     //   const sortBy = computed(() => facetGetters.getSortOptions(result.value));
     //   const facets = computed(() =>
@@ -427,9 +426,9 @@ export default {
     //     return category?.label || items[0].label;
     //   });
     //
-    onSSR(async () => {
-      // await search(th.getFacetsFromURL());
-    });
+    // onSSR(async () => {
+    //   // await search(th.getFacetsFromURL());
+    // });
 
     const { changeFilters, isFacetColor } = useUiHelpers();
     const { toggleFilterSidebar } = useUiState();
@@ -488,9 +487,9 @@ export default {
       //sortBy,
       //facets,
       breadcrumbs,
-      addItemToWishlist,
-      addItemToCart,
-      isInCart,
+      //addItemToWishlist,
+      //addItemToCart,
+      //isInCart,
       isFacetColor,
       selectFilter,
       isFilterSelected,
