@@ -35,13 +35,12 @@
         <div class="navbar__sort desktop-only">
           <span class="navbar__label">{{ $t("Sort by") }}:</span>
           <LazyHydrate on-interaction>
-            <!-- <SfSelect
-              :value="sortBy.selected"
+            <SfSelect
               placeholder="Select sorting"
               class="navbar__select"
               @input="th.changeSorting"
             >
-              <SfSelectOption
+              <!--<SfSelectOption
                 v-for="option in sortBy.options"
                 :key="option.id"
                 :value="option.id"
@@ -91,13 +90,13 @@
     <div class="main section">
       <div class="sidebar desktop-only">
         <LazyHydrate when-idle>
-         <!-- <SfLoader
+          <!-- <SfLoader
             :class="{ 'loading--categories': loading }"
             :loading="loading"
-          >
+          >-->
             <SfAccordion :open="activeCategory" :show-chevron="true">
               <SfAccordionItem
-                v-for="(cat, i) in categoryTree && categoryTree.items"
+                v-for="(cat, i) in categoryTree"
                 :key="i"
                 :header="cat.label"
               >
@@ -107,7 +106,7 @@
                       <SfMenuItem :count="cat.count || ''" :label="cat.label">
                         <template #label>
                           <nuxt-link
-                            :to="localePath(th.getCatLink(cat))"
+                            :to="localePath(`c/${cat.categoryId}`)"
                             :class="
                               cat.isCurrent ? 'sidebar--cat-selected' : ''
                             "
@@ -117,7 +116,7 @@
                         </template>
                       </SfMenuItem>
                     </SfListItem>
-                    <SfListItem
+                    <!--<SfListItem
                       class="list__item"
                       v-for="(subCat, j) in cat.items"
                       :key="j"
@@ -137,13 +136,13 @@
                           </nuxt-link>
                         </template>
                       </SfMenuItem>
-                    </SfListItem>
+                    </SfListItem>-->
                   </SfList>
                 </template>
               </SfAccordionItem>
             </SfAccordion>
-          </SfLoader>-->
-          <div></div>
+          <!--</SfLoader>-->
+          
         </LazyHydrate>
       </div>
       <!--<SfLoader :class="{ loading }" :loading="loading">-->
@@ -162,22 +161,11 @@
             :style="{ '--index': i }"
             :title="product.productName"
             :image="product.productImage"
-            :regular-price="
-              $n(product.price, 'currency')
-            "
-      
+            :regular-price="$n(product.price, 'currency')"
             :max-rating="5"
-            
             :show-add-to-cart-button="true"
             :isOnWishlist="false"
-            
-            :link="
-              localePath(
-                `/p/${product.productId}/${product.SKU
-                  
-                }`
-              )
-            "
+            :link="localePath(`/p/${product.productId}/${product.SKU}`)"
             class="products__product-card"
             @click:wishlist="addItemToWishlist({ product })"
             @click:add-to-cart="addItemToCart({ product, quantity: 1 })"
@@ -197,23 +185,14 @@
             :title="product.productName"
             :description="product.productName"
             :image="product.productImage"
-            :regular-price="
-              $n(product.price, 'currency')
-            "
-            
+            :regular-price="$n(product.price, 'currency')"
             :max-rating="5"
             :score-rating="3"
             :is-on-wishlist="false"
             class="products__product-card-horizontal"
             @click:wishlist="addItemToWishlist({ product })"
             @click:add-to-cart="addItemToCart({ product, quantity: 1 })"
-            :link="
-              localePath(
-                `/p/${product.productId}/${product.SKU
-                  
-                }`
-              )
-            "
+            :link="localePath(`/p/${product.productId}/${product.SKU}`)"
           >
             <template #configuration>
               <SfProperty
@@ -399,11 +378,11 @@ export default {
         (product) => product.categoryId == th.getFacetsFromURL().rootCatSlug
       );
     });
-    //const categoryTree = computed(() =>
-    //facetGetters.getCategoryTree(result.value)
-    //);
+    const categoryTree = computed(() => categories);
+    console.log('cat',categoryTree);
+    
     const breadcrumbs = computed(() => [
-      { link: '/', text: "Home" },
+      { link: "/", text: "Home" },
       { link: th.getFacetsFromURL().rootCatSlug, text: "Lamp" },
     ]);
     //   const sortBy = computed(() => facetGetters.getSortOptions(result.value));
@@ -411,20 +390,13 @@ export default {
     //     facetGetters.getGrouped(result.value, ["color", "size"])
     //   );
     //   const pagination = computed(() => facetGetters.getPagination(result.value));
-    //   const activeCategory = computed(() => {
-    //     const items = categoryTree.value.items;
-    //
-    //     if (!items) {
-    //       return "";
-    //     }
-    //
-    //     const category = items.find(
-    //       ({ isCurrent, items }) =>
-    //         isCurrent || items.find(({ isCurrent }) => isCurrent)
-    //     );
-    //
-    //     return category?.label || items[0].label;
-    //   });
+    const activeCategory = computed(() => {
+      const category = categoryTree.value.find(
+        (item) => item.categoryId == th.getFacetsFromURL().rootCatSlug
+      );
+
+      return category?.label;
+    });
     //
     // onSSR(async () => {
     //   // await search(th.getFacetsFromURL());
@@ -479,11 +451,11 @@ export default {
       ...uiState,
       th,
       productsDisplay,
-      //categoryTree,
+      categoryTree,
       //loading,
       productGetters,
       //pagination,
-      //activeCategory,
+      activeCategory,
       //sortBy,
       //facets,
       breadcrumbs,

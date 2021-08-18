@@ -11,8 +11,8 @@
         </nuxt-link>
       </template>
       <template #navigation>
-        <SfHeaderNavigationItem class="nav-item" v-e2e="'app-header-url_women'" label="HOME Interior" :link="localePath('/c/women')"/>
-        <SfHeaderNavigationItem class="nav-item"  v-e2e="'app-header-url_men'" label="Office interior" :link="localePath('/c/men')" />
+        <SfHeaderNavigationItem class="nav-item" v-e2e="'app-header-url_women'" label="HOME Interior" :link="localePath('/c/1')"/>
+        <SfHeaderNavigationItem class="nav-item"  v-e2e="'app-header-url_men'" label="Office interior" :link="localePath('/c/2')" />
       </template>
       <template #aside>
         <LocaleSelector class="smartphone-only" />
