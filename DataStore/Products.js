@@ -4,8 +4,8 @@ export const products = [
     SKU: "fancy_Lamp_Yellow",
     productName: "Fancy Lamp",
     categoryId: 1,
-    productImage: ["/static/products/lamp.webp"],
+    productImage: "/products/lamp.png",
     varient: [{}],
     price: 250
   }
-];
+]
