@@ -81,11 +81,11 @@ export default {
     '@vue-storefront/middleware/nuxt'
   ],
   i18n: {
-    currency: 'USD',
-    country: 'US',
+    currency: 'INR',
+    country: 'IN',
     countries: [
-      { name: 'US',
-        label: 'United States',
+      { name: 'IN',
+        label: 'India',
         states: [
           'California',
           'Nevada'
