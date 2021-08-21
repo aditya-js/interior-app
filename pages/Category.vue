@@ -61,7 +61,7 @@
           >
         </div>-->
 
-        <div class="navbar__view">
+       <!-- <div class="navbar__view">
           <span class="navbar__view-label desktop-only">{{ $t("View") }}</span>
           <SfIcon
             class="navbar__view-icon"
@@ -83,7 +83,7 @@
             :aria-pressed="!isCategoryGridView"
             @click="changeToCategoryListView"
           />
-        </div>
+        </div>-->
       </div>
     </div>
 

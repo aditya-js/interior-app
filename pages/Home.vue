@@ -130,7 +130,7 @@ export default {
     return {
       heroes: [
         {
-          title: 'Colorful summer dresses are already in store',
+          title: 'Amazing Home Drawing room interior',
           subtitle: 'NEW COLLECTION 2021',
           buttonText: 'Learn more',
           background: '#eceff1',
@@ -138,7 +138,7 @@ export default {
           link: '/c/women/women-clothing-shirts'
         },
         {
-          title: 'Colorful summer dresses are already in store',
+          title: 'Make your Home paradise',
           subtitle: 'NEW COLLECTION 2021',
           buttonText: 'Learn more',
           background: '#efebe9',
@@ -148,7 +148,7 @@ export default {
             'sf-hero-item--position-bg-top-left sf-hero-item--align-right'
         },
         {
-          title: 'Colorful summer dresses are already in store',
+          title: 'Make your dream workplace',
           subtitle: 'NEW COLLECTION 2021',
           buttonText: 'Learn more',
           background: '#fce4ec',
